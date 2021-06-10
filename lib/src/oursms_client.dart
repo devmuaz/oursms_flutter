@@ -25,7 +25,7 @@ class OursmsClient {
     Dio? dio,
   }) {
     _dio = dio ?? _defaultDio;
-    _oursmsService = OursmsService(_dio!);
+    _oursmsService = OursmsService(_dio);
   }
 
   /// The api key value.
@@ -34,8 +34,8 @@ class OursmsClient {
   /// The user id which identifies your account.
   final int userId;
 
-  Dio? _dio;
-  OursmsService? _oursmsService;
+  late Dio _dio;
+  late OursmsService _oursmsService;
 
   static final Logger _logger = Logger();
 
@@ -47,8 +47,8 @@ class OursmsClient {
     String phoneNumber,
     String message,
   ) async {
-    return await _getStateOf<SentMessage>(request: () {
-      return _oursmsService!.sendOneMessage(
+    return _getStateOf<SentMessage>(request: () {
+      return _oursmsService.sendOneMessage(
         OneMessageRequest(
           key: key,
           userId: userId,
@@ -64,8 +64,8 @@ class OursmsClient {
     String phoneNumber,
     String otp,
   ) async {
-    return await _getStateOf<SentMessage>(request: () {
-      return _oursmsService!.sendOtpMessage(
+    return _getStateOf<SentMessage>(request: () {
+      return _oursmsService.sendOtpMessage(
         OtpMessageRequest(
           key: key,
           userId: userId,
@@ -81,8 +81,8 @@ class OursmsClient {
   Future<MessageStatus?> getMessageStatus(
     String messageId,
   ) async {
-    return await _getStateOf<MessageStatus>(request: () {
-      return _oursmsService!.getMessageStatus(messageId);
+    return _getStateOf<MessageStatus>(request: () {
+      return _oursmsService.getMessageStatus(messageId);
     });
   }
 
@@ -102,7 +102,7 @@ class OursmsClient {
         );
       }
     } on DioError catch (e) {
-      if (_dio!.interceptors.isEmpty) {
+      if (_dio.interceptors.isEmpty) {
         _logger.d(e, e.error, e.stackTrace);
       }
       return null;

@@ -2,7 +2,7 @@
 
 Flutter API Integration
 
-This package provides simple lightweighted methods in which you can use to send meesages to a phone number.
+This package provides simple lightweight methods in which you can use to send meesages to a phone number.
 
 For more info, visit [OurSMS](https://oursms.app/) service
 
@@ -14,10 +14,16 @@ You can simply use it like so:
 final OursmsClient client = OursmsClient(key: API_KEY, userId: USER_ID);
 
 // OSM (One Single Message)
-final SentMessage sentMessage = await client.sendOneMessage(PHONE_NUMBER, MESSAGE);
+final SentMessage sentMessage = await client.sendOneMessage(
+    PHONE_NUMBER,
+    MESSAGE,
+);
 
 // OTP (One Time Password)
-final SentMessage sentMessage = await client.sendOtpMessage(PHONE_NUMBER, OTP_NUMBER);
+final SentMessage sentMessage = await client.sendOtpMessage(
+    PHONE_NUMBER,
+    OTP_NUMBER,
+);
 
 // Get a message status
 final MessageStatus messageStatus = await client.getMessageStatus(MESSAGE_ID);

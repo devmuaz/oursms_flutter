@@ -36,7 +36,7 @@ class SentMessage extends Equatable {
 
 @JsonSerializable()
 class SentMessageData extends Equatable {
-  SentMessageData({
+  const SentMessageData({
     this.messageId,
     this.phoneNumber,
     this.status,
