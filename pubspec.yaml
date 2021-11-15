@@ -1,6 +1,6 @@
 name: oursms
 description: This package provides simple lightweight methods in which you can use to send meesages to a phone number.
-version: 0.0.1+1
+version: 0.0.1+2
 homepage: https://github.com/devmuaz/oursms_flutter
 
 environment:
